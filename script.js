@@ -453,6 +453,8 @@
         var current = 0;
         var total = track.children.length;
         var autoTimer;
+        var touchStartX = 0;
+        var touchStartY = 0;
 
         function goTo(index) {
             if (index < 0) index = total - 1;
@@ -489,6 +491,34 @@
                 nav.scrollBy({ left: 150, behavior: 'smooth' });
             });
         }
+
+        track.addEventListener('touchstart', function (event) {
+            if (!event.touches || !event.touches.length) return;
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+        }, { passive: true });
+
+        track.addEventListener('touchmove', function (event) {
+            if (!event.touches || !event.touches.length) return;
+            var deltaX = event.touches[0].clientX - touchStartX;
+            var deltaY = event.touches[0].clientY - touchStartY;
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        track.addEventListener('touchend', function (event) {
+            if (!event.changedTouches || !event.changedTouches.length) return;
+
+            var diffX = event.changedTouches[0].clientX - touchStartX;
+            var diffY = event.changedTouches[0].clientY - touchStartY;
+            var threshold = 50;
+
+            if (Math.abs(diffX) > threshold && Math.abs(diffX) > Math.abs(diffY)) {
+                goTo(diffX < 0 ? current + 1 : current - 1);
+                resetAuto();
+            }
+        }, { passive: true });
 
         startAuto();
     }

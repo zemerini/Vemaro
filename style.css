@@ -674,6 +674,7 @@ img {
     display: flex;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: transform;
+    touch-action: pan-y;
 }
 
 /* Individual Slide */
@@ -1517,6 +1518,15 @@ img {
 
     .hero-card {
         padding: 36px 24px;
+    }
+
+    #leistungen-hero {
+        padding-top: 148px;
+    }
+
+    #leistungen-hero .hero-title {
+        line-height: 1.24;
+        padding-top: 2px;
     }
 
     .hero-stats {
