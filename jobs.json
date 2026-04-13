@@ -1,0 +1,120 @@
+[
+  {
+    "id": "JOB-WV-001",
+    "title": "Warenverräumer (m/w/d)",
+    "location": "Bremen und Umgebung (z. B. Bremen-Mitte, Bremen-Nord, Huchting, Hemelingen, Findorff)",
+    "workdays": "Mo-Sa",
+    "startDate": "ab sofort",
+    "employmentTypes": [
+      "Minijob",
+      "Teilzeit",
+      "Werkstudent",
+      "Vollzeit"
+    ],
+    "description": "Als Warenverräumer:in bist du für die ordnungsgemäße und ansprechende Präsentation der Waren im Markt verantwortlich. Du sorgst dafür, dass die Regale stets gut gefüllt sind und die Produkte ordentlich und verkaufsfördernd präsentiert werden. Außerdem kontrollierst du Qualität, Frische und Mindesthaltbarkeitsdatum und hilfst Kund:innen bei Fragen auf der Verkaufsfläche.",
+    "tasks": [
+      "Verräumen von Waren aus dem Lager in die Regale und auf die Verkaufsflächen",
+      "Pflege und Ordnung der Regalflächen",
+      "Kontrolle von Frische, Qualität und MHD",
+      "Aussortieren nicht mehr verkaufsfähiger Waren",
+      "Freundliche Unterstützung der Kund:innen bei Fragen"
+    ],
+    "requirements": [
+      "Teamfähigkeit und Flexibilität",
+      "Grundkenntnisse Deutsch wünschenswert",
+      "Zuverlässiges, gepflegtes Auftreten",
+      "Belastbarkeit und körperliche Fitness",
+      "Erste Erfahrungen im Einzelhandel von Vorteil, aber kein Muss"
+    ],
+    "benefits": [
+      "Persönliche Ansprechpartner",
+      "Unbefristeter Arbeitsvertrag",
+      "Fahrtkostenzuschuss",
+      "Gehaltsvorschuss",
+      "Faire und pünktliche Bezahlung",
+      "Einen zentralen und sicheren Arbeitsplatz",
+      "Halbjahres-Geschäftsessen",
+      "Arbeitskleidung",
+      "Ausführliche Einarbeitungen"
+    ]
+  },
+  {
+    "id": "JOB-KA-002",
+    "title": "Kassierer:in / Verkäufer:in (m/w/d)",
+    "location": "Bremen und Umgebung (z. B. Bremen-Mitte, Bremen-Nord, Huchting, Hemelingen, Findorff)",
+    "workdays": "Mo-Sa",
+    "startDate": "ab sofort",
+    "employmentTypes": [
+      "Minijob",
+      "Teilzeit",
+      "Werkstudent",
+      "Vollzeit"
+    ],
+    "description": "Als Kassenkraft bist du das freundliche Gesicht im Kassenbereich unserer Partnerfilialen. Du sorgst für einen zügigen und exakten Zahlungsvorgang, prüfst Waren und Gutscheine, pflegst die Kasse und stehst Kund:innen bei Fragen hilfsbereit zur Seite.",
+    "tasks": [
+      "Abwicklung aller Zahlungsarten (Bargeld, EC-, Kreditkarte, Gutscheine)",
+      "Korrekte Bedienung des Kassensystems und Kassenabschluss",
+      "Prüfung von Waren auf Vollständigkeit und Unversehrtheit",
+      "Unterstützung bei Kund:innenanfragen und Reklamationen",
+      "Ordnung und Sauberkeit im Kassenbereich"
+    ],
+    "requirements": [
+      "Erste Erfahrungen an der Kasse oder im direkten Kundenkontakt von Vorteil",
+      "Freundliches, serviceorientiertes Auftreten",
+      "Sehr gute Deutschkenntnisse in Wort und Schrift",
+      "Zuverlässigkeit und Verantwortungsbewusstsein",
+      "Belastbarkeit und Teamfähigkeit"
+    ],
+    "benefits": [
+      "Persönliche Ansprechpartner",
+      "Unbefristeter Arbeitsvertrag",
+      "Fahrtkostenzuschuss",
+      "Gehaltsvorschuss",
+      "Faire und pünktliche Bezahlung",
+      "Einen zentralen und sicheren Arbeitsplatz",
+      "Halbjahres-Geschäftsessen",
+      "Arbeitskleidung",
+      "Ausführliche Einarbeitungen"
+    ]
+  },
+  {
+    "id": "JOB-LA-003",
+    "title": "Lagerhelfer (m/w/d)",
+    "location": "Bremen und Umgebung (z. B. Bremen-Mitte, Bremen-Nord, Huchting, Hemelingen, Findorff)",
+    "workdays": "Mo-Sa",
+    "startDate": "ab sofort",
+    "employmentTypes": [
+      "Minijob",
+      "Teilzeit",
+      "Werkstudent",
+      "Vollzeit"
+    ],
+    "description": "Als Lagerhelfer:in unterstützt du unsere Partnerlogistikbereiche tatkräftig bei allen anfallenden Tätigkeiten. Du sorgst dafür, dass Waren eingelagert, kommissioniert und für den Weitertransport vorbereitet werden. Dabei arbeitest du eng mit dem Team zusammen und stellst einen reibungslosen Warenfluss sicher.",
+    "tasks": [
+      "Warenannahme und Eingangskontrolle",
+      "Einlagerung und sachgerechte Lagerplatzpflege",
+      "Kommissionierung von Kundenaufträgen",
+      "Verpacken und Versandvorbereitung",
+      "Kontrolle von Beständen und Durchführung von Inventuren",
+      "Ordnung und Sauberkeit im Lagerbereich"
+    ],
+    "requirements": [
+      "Körperliche Fitness und Belastbarkeit",
+      "Teamfähigkeit und Zuverlässigkeit",
+      "Grundkenntnisse Deutsch wünschenswert",
+      "Sorgfalt und Genauigkeit",
+      "Erste Erfahrungen im Lager oder Logistikbereich von Vorteil, aber kein Muss"
+    ],
+    "benefits": [
+      "Persönliche Ansprechpartner",
+      "Unbefristeter Arbeitsvertrag",
+      "Fahrtkostenzuschuss",
+      "Gehaltsvorschuss",
+      "Faire und pünktliche Bezahlung",
+      "Einen zentralen und sicheren Arbeitsplatz",
+      "Halbjahres-Geschäftsessen",
+      "Arbeitskleidung",
+      "Ausführliche Einarbeitungen"
+    ]
+  }
+]

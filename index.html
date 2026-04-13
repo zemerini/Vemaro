@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vemaro – Ihre zuverlässige Personalvermittlung</title>
+    <meta name="description"
+        content="Vemaro vermittelt kompetentes Personal: Kassenkräfte, Warenverräumung, Lagerhelfer und Reinigungskräfte. Zuverlässig und flexibel.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="home">
+
+    <!-- Animated Mesh Background -->
+    <div class="mesh-bg">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+        <div class="mesh-blob blob-4"></div>
+        <div class="mesh-blob blob-5"></div>
+    </div>
+
+
+
+    <!-- Navigation -->
+    <nav class="glass-nav" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="Bilder/Logo.png" alt="Vemaro Logo" class="nav-logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link active">Startseite</a></li>
+                <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+                <li><a href="karriere.html" class="nav-link">Karriere</a></li>
+                <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
+                <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+            </ul>
+            <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-card glass-card">
+                <div class="card-shine"></div>
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Zuverlässige Personalvermittlung
+                </div>
+                <h1 class="hero-title">
+                    Personal, das<br>
+                    <span class="title-accent">sofort einsatzbereit ist.</span>
+                </h1>
+                <p class="hero-description">
+                    Vemaro vermittelt zuverlässiges Personal für Kasse, Warenverräumung, Lagerunterstützung und
+                    Reinigung. Ob kurzfristiger Engpass oder planbarer Einsatz: Wir liefern schnelle und flexible
+                    Unterstützung, genau dann, wenn sie gebraucht wird.
+                </p>
+                <div class="hero-actions">
+                    <a href="kontakt.html" class="btn btn-primary">
+                        Personal anfragen
+                    </a>
+                    <a href="leistungen.html" class="btn btn-secondary">
+                        Unsere Leistungen
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Zuverlässig</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Kernbereiche</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">Schnell</span>
+                        <span class="stat-label">Vermittelt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="section" id="leistungen-overview">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Unsere Personal-Dienstleistungen</span>
+                <h2 class="section-title">Zuverlässiges Personal für jeden Bedarf</h2>
+                <p class="section-subtitle">Wir unterstützen Ihr Unternehmen durch flexible und motivierte Mitarbeiter
+                    in den Bereichen Kasse, Warenverräumung, Lager und Reinigung.</p>
+            </div>
+
+            <div class="glass-card slider-container">
+                <div class="card-shine"></div>
+
+                <div class="slide-nav-wrapper" style="padding: 20px 20px 0;">
+                    <button class="slide-nav-arrow" id="navArrowLeft" aria-label="Nach links scrollen">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="slide-nav" id="slideNav">
+                        <button class="slide-tab active" data-slide="0">Kassenkräfte</button>
+                        <button class="slide-tab" data-slide="1">Warenverräumung</button>
+                        <button class="slide-tab" data-slide="2">Lagerhelfer</button>
+                        <button class="slide-tab" data-slide="3">Reinigungskräfte</button>
+                    </div>
+                    <button class="slide-nav-arrow" id="navArrowRight" aria-label="Nach rechts scrollen">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="slide-track" id="slideTrack">
+                    <!-- Slide 1: Kassenkräfte -->
+                    <div class="slide">
+                        <div class="slide-img">
+                            <img src="Bilder/kasse.jpg" alt="Kassenkräfte">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Kassenkräfte</h3>
+                            <p>Unsere geschulten und freundlichen Kassenkräfte sorgen für einen reibungslosen Ablauf an
+                                der Kasse. Sie bringen Erfahrung mit gängigen Kassensystemen mit und zeichnen sich durch
+                                hohe Konzentration sowie eine kundenorientierte Arbeitsweise aus.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2: Warenverräumung -->
+                    <div class="slide">
+                        <div class="slide-img">
+                            <img src="Bilder/ware.jpg" alt="Warenverräumung">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Warenverräumung</h3>
+                            <p>Mit unseren motivierten Mitarbeitern für die Warenverräumung garantieren wir stets
+                                gefüllte Regale. Wir arbeiten zügig, sorgfältig und achten darauf, dass Ihre Waren
+                                ansprechend präsentiert werden und pünktlich verfügbar sind.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3: Lagerhelfer -->
+                    <div class="slide">
+                        <div class="slide-img">
+                            <img src="Bilder/lager.jpg" alt="Lagerhelfer">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Lagerhelfer</h3>
+                            <p>Starke Hände und effizientes Vorgehen: Unsere Lagerhelfer unterstützen Sie kompetent beim
+                                Be- und Entladen, Sortieren sowie der Kommissionierung. So bleibt Ihr Logistikablauf
+                                auch zu Stoßzeiten effizient und flüssig.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 4: Reinigungskräfte -->
+                    <div class="slide">
+                        <div class="slide-img">
+                            <img src="Bilder/reinigung.jpg" alt="Reinigungskräfte">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Reinigungskräfte</h3>
+                            <p>Eine saubere Arbeitsumgebung ist die Basis für Erfolg. Wir vermitteln gründliche und
+                                verlässliche Reinigungskräfte für Büro-, Verkaufs- oder Lagerräume, die höchste
+                                Hygienestandards sicherstellen.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="Bilder/Logo.png" alt="Vemaro" class="footer-logo-img">
+            </div>
+            <p class="footer-copy">&copy; 2026 Vemaro. Alle Rechte vorbehalten.</p>
+            <div class="footer-creator">
+                <span>Website by</span>
+                <img src="Bilder/LUANA.png" alt="LUANA" class="footer-creator-logo">
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

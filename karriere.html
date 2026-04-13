@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karriere – Vemaro | Jobs & Bewerbung</title>
+    <meta name="description"
+        content="Entdecken Sie offene Stellen bei Vemaro und bewerben Sie sich direkt online mit Lebenslauf.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="career">
+
+    <div class="mesh-bg">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+        <div class="mesh-blob blob-4"></div>
+        <div class="mesh-blob blob-5"></div>
+    </div>
+
+    <nav class="glass-nav" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="Bilder/Logo.png" alt="Vemaro Logo" class="nav-logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Startseite</a></li>
+                <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+                <li><a href="karriere.html" class="nav-link active">Karriere</a></li>
+                <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
+                <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+            </ul>
+            <a href="#bewerben" class="nav-cta">Jetzt bewerben</a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="karriere-hero">
+        <div class="hero-container">
+            <div class="hero-card glass-card">
+                <div class="card-shine"></div>
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Karriere bei Vemaro
+                </div>
+                <h1 class="hero-title">
+                    Dein nächster Job<br>
+                    <span class="title-accent">in einem starken Team</span>
+                </h1>
+                <p class="hero-description">
+                    Hier findest du unsere aktuellen Stellenangebote. Bewirb dich direkt online in wenigen Minuten
+                    inklusive Lebenslauf.
+                </p>
+                <div class="hero-actions">
+                    <a href="#jobs" class="btn btn-primary">Offene Stellen</a>
+                    <a href="#bewerben" class="btn btn-secondary">Direkt bewerben</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="wer-wir-sind" style="padding-top: 20px;">
+        <div class="section-container">
+            <div class="glass-card career-about-card">
+                <div class="card-shine"></div>
+                <span class="section-tag">Wer wir sind</span>
+                <h2 class="section-title">VEMARO in Bremen</h2>
+                <p class="career-about-text">VEMARO ist ein junges Personaldienstleistungsunternehmen aus Bremen, das sich
+                    auf die Vermittlung flexibler und zuverlässiger Aushilfskräfte spezialisiert hat. Wir unterstützen
+                    zahlreiche Einzelhandelsfilialen in Bremen und Umgebung mit Personal für Warenverräumung,
+                    Kassenservice, Lager und Reinigung, schnell, flexibel und passgenau.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="jobs">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Offene Stellen</span>
+                <h2 class="section-title">Aktuelle Jobangebote</h2>
+                <p class="section-subtitle">Wähle eine Stelle aus und starte deine Bewerbung direkt über das Formular.</p>
+            </div>
+            <div class="jobs-grid" id="jobsList"></div>
+        </div>
+    </section>
+
+    <section class="section" id="bewerben" style="padding-top: 30px;">
+        <div class="section-container application-layout">
+            <div class="section-header">
+                <span class="section-tag">Online-Bewerbung</span>
+                <h2 class="section-title">Jetzt bewerben</h2>
+                <p class="section-subtitle">Bitte fülle alle Pflichtfelder aus und lade deinen Lebenslauf hoch.</p>
+            </div>
+
+            <div class="glass-card contact-card">
+                <div class="card-shine"></div>
+                <form class="contact-form" id="applicationForm" method="post" action="handler/process-application.php"
+                    enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="applicationName">Vor- und Nachname</label>
+                            <input type="text" id="applicationName" name="name" placeholder="Max Mustermann" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicationEmail">E-Mail</label>
+                            <input type="email" id="applicationEmail" name="email" placeholder="max@email.de" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="applicationPhone">Telefon</label>
+                            <input type="tel" id="applicationPhone" name="phone" placeholder="+49 ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobSelect">Stelle</label>
+                            <select id="jobSelect" name="jobId" required>
+                                <option value="" disabled selected>Bitte Stelle wählen</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicationMessage">Nachricht / Anschreiben</label>
+                        <textarea id="applicationMessage" name="message"
+                            placeholder="Erzählen Sie uns kurz, warum Sie gut zur Stelle passen." rows="6"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicationCv">Lebenslauf (PDF, JPG, PNG, max. 5 MB)</label>
+                        <div class="file-upload-row">
+                            <input type="file" id="applicationCv" class="file-input-native" name="cv"
+                                accept=".pdf,.jpg,.jpeg,.png,image/jpeg,image/png" required>
+                            <button type="button" id="fileSelectBtn" class="btn btn-secondary file-select-btn">Datei
+                                auswählen</button>
+                            <div class="upload-progress-wrap" id="fileProgressWrap" aria-live="polite">
+                                <div class="upload-progress-track">
+                                    <div class="upload-progress-bar" id="fileProgressBar"></div>
+                                </div>
+                                <span class="upload-progress-text" id="fileProgressText">0%</span>
+                            </div>
+                        </div>
+                        <div class="file-chip" id="fileChip" hidden>
+                            <span class="file-icon" id="fileIcon">FILE</span>
+                            <span class="file-name" id="fileName"></span>
+                            <button type="button" class="file-remove-btn" id="fileRemoveBtn"
+                                aria-label="Datei entfernen">Entfernen</button>
+                        </div>
+                    </div>
+                    <p class="application-note">Ihre Unterlagen werden für maximal 30 Tage gespeichert und danach gelöscht.</p>
+                    <p class="application-note">Alternativ können Sie direkt an <a href="mailto:bewerbung@vemaro.de">bewerbung@vemaro.de</a>
+                        schreiben oder uns unter <a href="tel:+49152184100723">0152 184100723</a> erreichen.</p>
+                    <div class="form-consent">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="applicationConsent" name="privacyConsent" required>
+                            <span class="checkmark"></span>
+                            <span class="consent-text">Ich bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner
+                                Bewerbung gemäß Datenschutzerklärung einverstanden.</span>
+                        </label>
+                    </div>
+                    <p class="form-feedback" id="applicationFeedback" aria-live="polite"></p>
+                    <button type="submit" class="btn btn-primary btn-full">Bewerbung senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="Bilder/Logo.png" alt="Vemaro" class="footer-logo-img">
+            </div>
+            <p class="footer-copy">&copy; 2026 Vemaro. Alle Rechte vorbehalten.</p>
+            <div class="footer-creator">
+                <span>Website by</span>
+                <img src="Bilder/LUANA.png" alt="LUANA" class="footer-creator-logo">
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
