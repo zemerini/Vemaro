@@ -1,9 +1,7 @@
 (function () {
     'use strict';
 
-
-
-    /* ───── 2. NAVIGATION ───── */
+    /* ───── 1. NAVIGATION ───── */
     function initNavigation() {
         var navbar = document.getElementById('navbar');
         var toggle = document.getElementById('mobileToggle');
@@ -11,6 +9,7 @@
         var links = document.querySelectorAll('.nav-link');
         var ticking = false;
 
+        /* Scroll-activated glassmorphism */
         window.addEventListener('scroll', function () {
             if (!ticking) {
                 requestAnimationFrame(function () {
@@ -21,52 +20,175 @@
             }
         }, { passive: true });
 
+        /* Mobile toggle with slide-in */
         if (toggle && navLinks) {
             toggle.addEventListener('click', function () {
+                var isOpen = navLinks.classList.contains('open');
                 toggle.classList.toggle('active');
+                toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+                toggle.setAttribute('aria-label', isOpen ? 'Menü öffnen' : 'Menü schließen');
                 navLinks.classList.toggle('open');
+
+                /* Prevent body scroll when menu is open */
+                document.body.style.overflow = isOpen ? '' : 'hidden';
             });
+
+            /* Close on link click */
             links.forEach(function (l) {
                 l.addEventListener('click', function () {
                     toggle.classList.remove('active');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-label', 'Menü öffnen');
                     navLinks.classList.remove('open');
+                    document.body.style.overflow = '';
                 });
+            });
+
+            /* Close on outside click */
+            document.addEventListener('click', function (e) {
+                if (navLinks.classList.contains('open') &&
+                    !navLinks.contains(e.target) &&
+                    !toggle.contains(e.target)) {
+                    toggle.classList.remove('active');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-label', 'Menü öffnen');
+                    navLinks.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            /* Close on Escape key */
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                    toggle.classList.remove('active');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-label', 'Menü öffnen');
+                    navLinks.classList.remove('open');
+                    document.body.style.overflow = '';
+                    toggle.focus();
+                }
             });
         }
     }
 
-    /* ───── 3. SCROLL REVEAL ───── */
+    /* ───── 2. SCROLL REVEAL ───── */
     function initScrollReveal() {
         var cards = document.querySelectorAll('.glass-card');
+        if (!cards.length) return;
+
         var obs = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
-                if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    obs.unobserve(e.target);
+                }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
         cards.forEach(function (c) { obs.observe(c); });
     }
 
-    /* ───── 4. CONTACT FORM ───── */
+    /* ───── 3. CONTACT FORM ───── */
     function initContactForm() {
         var form = document.getElementById('contactForm');
         if (!form) return;
+
+        var feedback = document.getElementById('contactFeedback');
+        var csrfInput = document.getElementById('contactCsrfToken');
+        var submitBtn = form.querySelector('.btn-primary');
+
+        function setFeedback(msg, isError) {
+            if (!feedback) return;
+            feedback.textContent = msg;
+            feedback.classList.remove('is-error', 'is-success');
+            feedback.classList.add(isError ? 'is-error' : 'is-success');
+        }
+
+        function clearFeedback() {
+            if (!feedback) return;
+            feedback.textContent = '';
+            feedback.classList.remove('is-error', 'is-success');
+        }
+
+        function fetchContactCsrf() {
+            fetch('handler/csrf-token.php?form=contact', { cache: 'no-store', credentials: 'same-origin' })
+                .then(function (res) { return res.json(); })
+                .then(function (data) {
+                    if (csrfInput && data.token) {
+                        csrfInput.value = data.token;
+                    }
+                })
+                .catch(function () { /* Token wird serverseitig abgelehnt */ });
+        }
+        fetchContactCsrf();
+
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            var btn = form.querySelector('.btn-primary');
-            var orig = btn.innerHTML;
-            btn.innerHTML = '<span>Gesendet ✓</span>';
-            btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
-            btn.style.pointerEvents = 'none';
-            setTimeout(function () {
-                btn.innerHTML = orig;
-                btn.style.background = '';
-                btn.style.pointerEvents = '';
-                form.reset();
-            }, 2500);
+            clearFeedback();
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            var originalText = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.innerHTML = '<span>Wird gesendet...</span>';
+                submitBtn.style.pointerEvents = 'none';
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'handler/process-contact.php', true);
+
+            xhr.addEventListener('load', function () {
+                var result;
+                try {
+                    result = JSON.parse(xhr.responseText || '{}');
+                } catch (_e) {
+                    result = { success: false, message: 'Unerwartete Serverantwort.' };
+                }
+
+                if (xhr.status >= 200 && xhr.status < 300 && result.success) {
+                    setFeedback('Nachricht erfolgreich gesendet! Wir melden uns bei Ihnen.', false);
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<span>Gesendet ✓</span>';
+                        submitBtn.style.background = 'linear-gradient(135deg,#34d399,#10b981)';
+                    }
+                    setTimeout(function () {
+                        form.reset();
+                        if (submitBtn) {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.style.background = '';
+                            submitBtn.style.pointerEvents = '';
+                        }
+                        clearFeedback();
+                        fetchContactCsrf();
+                    }, 3000);
+                    return;
+                }
+
+                setFeedback(result.message || 'Nachricht konnte nicht gesendet werden.', true);
+                fetchContactCsrf();
+                if (submitBtn) {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.pointerEvents = '';
+                }
+            });
+
+            xhr.addEventListener('error', function () {
+                setFeedback('Verbindung fehlgeschlagen. Bitte später erneut versuchen.', true);
+                fetchContactCsrf();
+                if (submitBtn) {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.pointerEvents = '';
+                }
+            });
+
+            xhr.send(new FormData(form));
         });
     }
 
-    /* ───── 5. CAREER PAGE ───── */
+    /* ───── 4. CAREER PAGE ───── */
     function initCareerPage() {
         var list = document.getElementById('jobsList');
         var form = document.getElementById('applicationForm');
@@ -83,9 +205,25 @@
         var fileName = document.getElementById('fileName');
         var fileIcon = document.getElementById('fileIcon');
         var fileRemoveBtn = document.getElementById('fileRemoveBtn');
+        var csrfInput = document.getElementById('csrfToken');
         var maxSizeBytes = 5 * 1024 * 1024;
         var readToken = 0;
         var uploadFallbackTimer = null;
+
+        /* ── CSRF-Token laden ── */
+        function fetchCsrfToken() {
+            fetch('handler/csrf-token.php', { cache: 'no-store', credentials: 'same-origin' })
+                .then(function (res) { return res.json(); })
+                .then(function (data) {
+                    if (csrfInput && data.token) {
+                        csrfInput.value = data.token;
+                    }
+                })
+                .catch(function () {
+                    /* Token konnte nicht geladen werden – Formular wird serverseitig abgelehnt */
+                });
+        }
+        fetchCsrfToken();
 
         function setFeedback(message, isError) {
             if (!feedback) return;
@@ -389,6 +527,7 @@
                 stopUploadFallback();
                 setFeedback(result.message || 'Bewerbung konnte nicht gesendet werden.', true);
                 setProgress(0);
+                fetchCsrfToken();
                 if (submitBtn) {
                     submitBtn.innerHTML = originalText;
                     submitBtn.style.pointerEvents = '';
@@ -399,6 +538,7 @@
                 stopUploadFallback();
                 setFeedback('Verbindung fehlgeschlagen. Bitte später erneut versuchen.', true);
                 setProgress(0);
+                fetchCsrfToken();
                 if (submitBtn) {
                     submitBtn.innerHTML = originalText;
                     submitBtn.style.pointerEvents = '';
@@ -427,7 +567,7 @@
             });
     }
 
-    /* ───── 6. SMOOTH SCROLL ───── */
+    /* ───── 5. SMOOTH SCROLL ───── */
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function (a) {
             a.addEventListener('click', function (e) {
@@ -441,7 +581,7 @@
         });
     }
 
-    /* ───── 7. SERVICE SLIDER ───── */
+    /* ───── 6. SERVICE SLIDER ───── */
     function initSlider() {
         var track = document.getElementById('slideTrack');
         var tabs = document.querySelectorAll('.slide-tab');
@@ -461,8 +601,12 @@
             if (index >= total) index = 0;
             current = index;
             track.style.transform = 'translateX(-' + (current * 100) + '%)';
-            tabs.forEach(function (t) { t.classList.remove('active'); });
+            tabs.forEach(function (t) {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
             tabs[current].classList.add('active');
+            tabs[current].setAttribute('aria-selected', 'true');
         }
 
         tabs.forEach(function (tab) {

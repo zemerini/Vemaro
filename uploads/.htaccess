@@ -1,7 +1,8 @@
-# Deny all direct access – files are only used as server-side email attachments
+# Deny all direct access to uploads
 Options -Indexes -ExecCGI
 RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .phps .phar .cgi .pl .py .sh .shtml
 
+# Block ALL direct file access – files are only accessed by the server (mail attachment)
 <IfModule mod_authz_core.c>
   Require all denied
 </IfModule>

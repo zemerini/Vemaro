@@ -9,14 +9,14 @@
         content="Erfahren Sie mehr über Vemaro – Ihr zuverlässiger Partner für professionelle Personaldienstleistungen. Qualität, Vertrauen und Nachhaltigkeit.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body data-page="about">
 
     <!-- Animated Mesh Background -->
-    <div class="mesh-bg">
+    <div class="mesh-bg" aria-hidden="true">
         <div class="mesh-blob blob-1"></div>
         <div class="mesh-blob blob-2"></div>
         <div class="mesh-blob blob-3"></div>
@@ -24,109 +24,111 @@
         <div class="mesh-blob blob-5"></div>
     </div>
 
-
-
     <!-- Navigation -->
-    <nav class="glass-nav" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="Bilder/Logo.png" alt="Vemaro Logo" class="nav-logo-img">
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="nav-link">Startseite</a></li>
-                <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
-                <li><a href="karriere.html" class="nav-link">Karriere</a></li>
-                <li><a href="ueber-uns.html" class="nav-link active">Über uns</a></li>
-                <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-            </ul>
-            <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <header>
+        <nav class="glass-nav" id="navbar" aria-label="Hauptnavigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo" aria-label="Vemaro Startseite">
+                    <img src="Bilder/Logo.png" alt="Vemaro Logo" class="nav-logo-img" width="120" height="48">
+                </a>
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="index.html" class="nav-link" role="menuitem">Startseite</a></li>
+                    <li role="none"><a href="leistungen.html" class="nav-link" role="menuitem">Leistungen</a></li>
+                    <li role="none"><a href="karriere.html" class="nav-link" role="menuitem">Karriere</a></li>
+                    <li role="none"><a href="ueber-uns.html" class="nav-link active" role="menuitem">Über uns</a></li>
+                    <li role="none"><a href="kontakt.html" class="nav-link" role="menuitem">Kontakt</a></li>
+                </ul>
+                <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-    <!-- About Section -->
-    <section class="section" id="ueber-uns" style="padding-top: 140px;">
-        <div class="section-container">
-            <div class="glass-card about-card">
-                <div class="card-shine"></div>
-                <div class="about-content">
-                    <span class="section-tag">Unser Versprechen</span>
-                    <h1 class="section-title">Professionalität & Gründlichkeit</h1>
-                    <p>
-                        Wir garantieren Ihnen eine zuverlässige, effiziente und unkomplizierte Ausführung aller
-                        Vermittlungs- und Personaldienstleistungen. Unser erfahrenes Team arbeitet koordiniert mit
-                        höchstem Qualitätsanspruch. Ihre Zufriedenheit steht für uns an erster Stelle.
-                    </p>
-                    <a href="#kontakt-infos" class="btn btn-secondary">Kontaktdaten anzeigen</a>
+    <main>
+        <!-- About Section -->
+        <section class="section" id="ueber-uns" style="padding-top: 140px;">
+            <div class="section-container">
+                <div class="glass-card about-card">
+                    <div class="card-shine"></div>
+                    <div class="about-content">
+                        <span class="section-tag">Unser Versprechen</span>
+                        <h1 class="section-title">Professionalität &amp; Gründlichkeit</h1>
+                        <p>
+                            Wir garantieren Ihnen eine zuverlässige, effiziente und unkomplizierte Ausführung aller
+                            Vermittlungs- und Personaldienstleistungen. Unser erfahrenes Team arbeitet koordiniert mit
+                            höchstem Qualitätsanspruch. Ihre Zufriedenheit steht für uns an erster Stelle.
+                        </p>
+                        <a href="#kontakt-infos" class="btn btn-secondary">Kontaktdaten anzeigen</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="section" id="kontakt-infos">
-        <div class="section-container">
-            <div class="glass-card hero-card" style="text-align: center;">
-                <div class="card-shine"></div>
-                <h2 class="section-title">Lernen Sie uns kennen</h2>
-                <p class="section-subtitle" style="margin-bottom: 32px;">Wir freuen uns darauf, Sie persönlich zu
-                    beraten und ein individuelles Angebot für Sie zu erstellen.</p>
+        <!-- CTA Section -->
+        <section class="section" id="kontakt-infos">
+            <div class="section-container">
+                <div class="glass-card hero-card" style="text-align: center;">
+                    <div class="card-shine"></div>
+                    <h2 class="section-title">Lernen Sie uns kennen</h2>
+                    <p class="section-subtitle" style="margin-bottom: 32px;">Wir freuen uns darauf, Sie persönlich zu
+                        beraten und ein individuelles Angebot für Sie zu erstellen.</p>
 
-                <div class="contact-info-grid">
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                                </path>
-                            </svg>
+                    <div class="contact-info-grid">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="contact-info-label">Telefon</span>
+                            <div class="contact-info-value"><a href="tel:+4915567261622">0155 67261622</a></div>
                         </div>
-                        <span class="contact-info-label">Telefon</span>
-                        <div class="contact-info-value"><a href="tel:+4915567261622">0155 67261622</a></div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                </path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <span class="contact-info-label">E-Mail</span>
+                            <div class="contact-info-value"><a href="mailto:info@vemaro.de">info@vemaro.de</a></div>
                         </div>
-                        <span class="contact-info-label">E-Mail</span>
-                        <div class="contact-info-value"><a href="mailto:info@vemaro.de">info@vemaro.de</a></div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <span class="contact-info-label">Anschrift</span>
+                            <div class="contact-info-value">Ritterhuderstraße 42,<br>28237 Bremen</div>
                         </div>
-                        <span class="contact-info-label">Anschrift</span>
-                        <div class="contact-info-value">Ritterhuderstraße 42,<br>28237 Bremen</div>
                     </div>
+
+                    <a href="kontakt.html" class="btn btn-primary">Jetzt Angebot erhalten</a>
                 </div>
-
-                <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="glass-footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <img src="Bilder/Logo.png" alt="Vemaro" class="footer-logo-img">
+                <img src="Bilder/Logo.png" alt="Vemaro" class="footer-logo-img" width="120" height="42">
             </div>
             <p class="footer-copy">&copy; 2026 Vemaro. Alle Rechte vorbehalten.</p>
             <div class="footer-creator">

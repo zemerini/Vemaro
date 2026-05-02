@@ -9,14 +9,14 @@
         content="Kontaktieren Sie Vemaro für qualifiziertes Personal. Wir vermitteln schnell und zuverlässig.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body data-page="contact">
 
     <!-- Animated Mesh Background -->
-    <div class="mesh-bg">
+    <div class="mesh-bg" aria-hidden="true">
         <div class="mesh-blob blob-1"></div>
         <div class="mesh-blob blob-2"></div>
         <div class="mesh-blob blob-3"></div>
@@ -24,97 +24,103 @@
         <div class="mesh-blob blob-5"></div>
     </div>
 
-
-
     <!-- Navigation -->
-    <nav class="glass-nav" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="Bilder/Logo.png" alt="Vemaro Logo" class="nav-logo-img">
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="nav-link">Startseite</a></li>
-                <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
-                <li><a href="karriere.html" class="nav-link">Karriere</a></li>
-                <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
-                <li><a href="kontakt.html" class="nav-link active">Kontakt</a></li>
-            </ul>
-            <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Contact Section -->
-    <section class="section" id="kontakt" style="padding-top: 140px;">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Kontakt</span>
-                <h1 class="section-title">Schreiben Sie uns</h1>
-                <p class="section-subtitle">Haben Sie Fragen oder möchten ein Angebot? Füllen Sie das Formular aus und
-                    wir melden uns zeitnah bei Ihnen.</p>
+    <header>
+        <nav class="glass-nav" id="navbar" aria-label="Hauptnavigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo" aria-label="Vemaro Startseite">
+                    <img src="Bilder/Logo.png" alt="Vemaro Logo" class="nav-logo-img" width="120" height="48">
+                </a>
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="index.html" class="nav-link" role="menuitem">Startseite</a></li>
+                    <li role="none"><a href="leistungen.html" class="nav-link" role="menuitem">Leistungen</a></li>
+                    <li role="none"><a href="karriere.html" class="nav-link" role="menuitem">Karriere</a></li>
+                    <li role="none"><a href="ueber-uns.html" class="nav-link" role="menuitem">Über uns</a></li>
+                    <li role="none"><a href="kontakt.html" class="nav-link active" role="menuitem">Kontakt</a></li>
+                </ul>
+                <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
+        </nav>
+    </header>
 
-            <div class="glass-card contact-card">
-                <div class="card-shine"></div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="contactName">Name</label>
-                            <input type="text" id="contactName" name="name" placeholder="Ihr vollständiger Name"
-                                required>
+    <main>
+        <!-- Contact Section -->
+        <section class="section" id="kontakt" style="padding-top: 140px;">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Kontakt</span>
+                    <h1 class="section-title">Schreiben Sie uns</h1>
+                    <p class="section-subtitle">Haben Sie Fragen oder möchten ein Angebot? Füllen Sie das Formular aus und
+                        wir melden uns zeitnah bei Ihnen.</p>
+                </div>
+
+                <div class="glass-card contact-card">
+                    <div class="card-shine"></div>
+                    <form class="contact-form" id="contactForm" method="post" action="handler/process-contact.php" novalidate>
+                        <input type="hidden" name="csrf_token" id="contactCsrfToken" value="">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Name</label>
+                                <input type="text" id="contactName" name="name" placeholder="Ihr vollständiger Name"
+                                    required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">E-Mail</label>
+                                <input type="email" id="contactEmail" name="email" placeholder="ihre@email.de" required
+                                    autocomplete="email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactPhone">Telefon</label>
+                                <input type="tel" id="contactPhone" name="phone" placeholder="Ihre Telefonnummer"
+                                    autocomplete="tel">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactService">Gewünschte Leistung</label>
+                                <select id="contactService" name="service">
+                                    <option value="" disabled selected>Bitte wählen</option>
+                                    <option value="kassenkraefte">Kassenkräfte</option>
+                                    <option value="warenverraeumung">Warenverräumung</option>
+                                    <option value="lagerhelfer">Lagerhelfer</option>
+                                    <option value="reinigungskraefte">Reinigungskräfte</option>
+                                    <option value="sonstiges">Sonstiges</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="contactEmail">E-Mail</label>
-                            <input type="email" id="contactEmail" name="email" placeholder="ihre@email.de" required>
+                            <label for="contactMessage">Nachricht</label>
+                            <textarea id="contactMessage" name="message" placeholder="Beschreiben Sie Ihr Anliegen..."
+                                rows="5" required></textarea>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="contactPhone">Telefon</label>
-                            <input type="tel" id="contactPhone" name="phone" placeholder="Ihre Telefonnummer">
+                        <div class="form-consent">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                                <span class="checkmark"></span>
+                                <span class="consent-text">Ich bin damit einverstanden, dass diese Daten zum Zwecke der
+                                    Kontaktaufnahme gespeichert und verarbeitet werden. Mir ist bekannt, dass ich meine
+                                    Einwilligung jederzeit widerrufen kann.*</span>
+                            </label>
                         </div>
-                        <div class="form-group">
-                            <label for="contactService">Gewünschte Leistung</label>
-                            <select id="contactService" name="service">
-                                <option value="" disabled selected>Bitte wählen</option>
-                                <option value="kassenkraefte">Kassenkräfte</option>
-                                <option value="warenverraeumung">Warenverräumung</option>
-                                <option value="lagerhelfer">Lagerhelfer</option>
-                                <option value="reinigungskraefte">Reinigungskräfte</option>
-                                <option value="sonstiges">Sonstiges</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactMessage">Nachricht</label>
-                        <textarea id="contactMessage" name="message" placeholder="Beschreiben Sie Ihr Anliegen..."
-                            rows="5" required></textarea>
-                    </div>
-                    <div class="form-consent">
-                        <label class="checkbox-container">
-                            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
-                            <span class="checkmark"></span>
-                            <span class="consent-text">Ich bin damit einverstanden, dass diese Daten zum Zwecke der
-                                Kontaktaufnahme gespeichert und verarbeitet werden. Mir ist bekannt, dass ich meine
-                                Einwilligung jederzeit widerrufen kann.*</span>
-                        </label>
-                    </div>
-                    <p class="form-hint">* Bitte füllen Sie alle erforderlichen Felder aus.</p>
-                    <button type="submit" class="btn btn-primary btn-full">Nachricht senden</button>
-                </form>
+                        <p class="form-hint">* Bitte füllen Sie alle erforderlichen Felder aus.</p>
+                        <p class="form-feedback" id="contactFeedback" aria-live="polite"></p>
+                        <button type="submit" class="btn btn-primary btn-full">Nachricht senden</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="glass-footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <img src="Bilder/Logo.png" alt="Vemaro" class="footer-logo-img">
+                <img src="Bilder/Logo.png" alt="Vemaro" class="footer-logo-img" width="120" height="42">
             </div>
             <p class="footer-copy">&copy; 2026 Vemaro. Alle Rechte vorbehalten.</p>
             <div class="footer-creator">
