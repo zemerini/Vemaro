@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 /* ───── 2. CSRF-Token prüfen ───── */
 session_start();
-$csrfToken = trim((string)($_POST['csrf_token'] ?? ''));
+$csrfToken = trim((string) ($_POST['csrf_token'] ?? ''));
 if (
     $csrfToken === '' ||
     !isset($_SESSION['csrf_token_contact']) ||
@@ -34,7 +34,7 @@ $rateLimitDir = dirname(__DIR__) . '/uploads/.ratelimit';
 if (!is_dir($rateLimitDir)) {
     @mkdir($rateLimitDir, 0755, true);
 }
-$clientIp = (string)($_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
+$clientIp = (string) ($_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
 $rateLimitFile = $rateLimitDir . '/contact_' . md5($clientIp) . '.json';
 $rateLimit = loadRateLimit($rateLimitFile);
 $now = time();
@@ -53,12 +53,12 @@ $rateLimit[] = $now;
 saveRateLimit($rateLimitFile, $rateLimit);
 
 /* ───── 4. Eingaben validieren ───── */
-$name    = sanitizeInput((string)($_POST['name'] ?? ''));
-$email   = sanitizeInput((string)($_POST['email'] ?? ''));
-$phone   = sanitizeInput((string)($_POST['phone'] ?? ''));
-$service = sanitizeInput((string)($_POST['service'] ?? ''));
-$message = sanitizeInput((string)($_POST['message'] ?? ''));
-$consent = (string)($_POST['privacyConsent'] ?? '');
+$name = sanitizeInput((string) ($_POST['name'] ?? ''));
+$email = sanitizeInput((string) ($_POST['email'] ?? ''));
+$phone = sanitizeInput((string) ($_POST['phone'] ?? ''));
+$service = sanitizeInput((string) ($_POST['service'] ?? ''));
+$message = sanitizeInput((string) ($_POST['message'] ?? ''));
+$consent = (string) ($_POST['privacyConsent'] ?? '');
 
 if ($name === '' || $email === '' || $message === '' || $consent === '') {
     respond(400, false, 'Bitte alle Pflichtfelder ausfüllen.');
@@ -90,25 +90,25 @@ if (containsHeaderInjection($email) || containsHeaderInjection($name)) {
 
 /* ───── 5. Service-Label zuordnen ───── */
 $serviceLabels = [
-    'kassenkraefte'     => 'Kassenkräfte',
-    'warenverraeumung'  => 'Warenverräumung',
-    'lagerhelfer'       => 'Lagerhelfer',
+    'kassenkraefte' => 'Kassenkräfte',
+    'warenverraeumung' => 'Warenverräumung',
+    'lagerhelfer' => 'Lagerhelfer',
     'reinigungskraefte' => 'Reinigungskräfte',
-    'sonstiges'         => 'Sonstiges',
+    'sonstiges' => 'Sonstiges',
 ];
 $serviceLabel = $serviceLabels[$service] ?? ($service !== '' ? $service : 'Nicht angegeben');
 
 /* ───── 6. E-Mail senden ───── */
-$to      = 'kontakt@vemaro.de';
+$to = 'kontakt@vemaro.de';
 $subject = 'Kontaktanfrage - ' . mb_substr($name, 0, 80);
 
-$headers   = [];
+$headers = [];
 $headers[] = 'From: Vemaro Kontakt <kontakt@vemaro.de>';
 $headers[] = 'Reply-To: ' . sanitizeEmailHeader($email);
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
 $headers[] = 'MIME-Version: 1.0';
 
-$body   = [];
+$body = [];
 $body[] = 'Neue Kontaktanfrage über die Website';
 $body[] = '========================================';
 $body[] = '';
@@ -133,7 +133,7 @@ if (!$sent) {
 }
 
 /* ───── 7. Bestätigungsmail ───── */
-$autoReplyBody  = "Guten Tag " . mb_substr($name, 0, 100) . ",\n\n";
+$autoReplyBody = "Guten Tag " . mb_substr($name, 0, 100) . ",\n\n";
 $autoReplyBody .= "vielen Dank für Ihre Anfrage. Wir haben Ihre Nachricht erhalten und melden uns schnellstmöglich bei Ihnen.\n\n";
 $autoReplyBody .= "Freundliche Grüße\nVemaro";
 
@@ -153,7 +153,7 @@ respond(200, true, 'Nachricht erfolgreich gesendet.');
 
 function containsHeaderInjection(string $value): bool
 {
-    return (bool)preg_match('/[\r\n\x00]/', $value);
+    return (bool) preg_match('/[\r\n\x00]/', $value);
 }
 
 function sanitizeEmailHeader(string $value): string
@@ -168,9 +168,11 @@ function sanitizeInput(string $value): string
 
 function loadRateLimit(string $file): array
 {
-    if (!is_file($file)) return [];
+    if (!is_file($file))
+        return [];
     $data = @file_get_contents($file);
-    if ($data === false) return [];
+    if ($data === false)
+        return [];
     $decoded = json_decode($data, true);
     return is_array($decoded) ? $decoded : [];
 }

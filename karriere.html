@@ -141,23 +141,36 @@
                         </div>
                         <div class="form-group">
                             <label for="applicationCv">Lebenslauf (PDF, JPG, PNG, max. 5 MB)</label>
-                            <div class="file-upload-row">
+                            <div class="file-drop-area" id="fileDropArea">
                                 <input type="file" id="applicationCv" class="file-input-native" name="cv"
                                     accept=".pdf,.jpg,.jpeg,.png,image/jpeg,image/png" required>
-                                <button type="button" id="fileSelectBtn" class="btn btn-secondary file-select-btn">Datei
-                                    auswählen</button>
-                                <div class="upload-progress-wrap" id="fileProgressWrap" aria-live="polite">
+                                <div class="file-drop-content">
+                                    <div class="file-drop-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="17 8 12 3 7 8"></polyline>
+                                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                                        </svg>
+                                    </div>
+                                    <span class="file-drop-text">Datei hier ablegen oder <span class="file-drop-browse">durchsuchen</span></span>
+                                    <span class="file-drop-hint">Maximal 5 MB</span>
+                                </div>
+                            </div>
+                            
+                            <div class="file-chip" id="fileChip" hidden>
+                                <div class="file-chip-main">
+                                    <span class="file-icon" id="fileIcon">FILE</span>
+                                    <span class="file-name" id="fileName"></span>
+                                    <button type="button" class="file-remove-btn" id="fileRemoveBtn" aria-label="Datei entfernen">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                    </button>
+                                </div>
+                                <div class="upload-progress-wrap" id="fileProgressWrap" style="display: none;">
                                     <div class="upload-progress-track">
                                         <div class="upload-progress-bar" id="fileProgressBar"></div>
                                     </div>
                                     <span class="upload-progress-text" id="fileProgressText">0%</span>
                                 </div>
-                            </div>
-                            <div class="file-chip" id="fileChip" hidden>
-                                <span class="file-icon" id="fileIcon">FILE</span>
-                                <span class="file-name" id="fileName"></span>
-                                <button type="button" class="file-remove-btn" id="fileRemoveBtn"
-                                    aria-label="Datei entfernen">Entfernen</button>
                             </div>
                         </div>
                         <p class="application-note">Ihre Unterlagen werden für maximal 30 Tage gespeichert und danach gelöscht.</p>

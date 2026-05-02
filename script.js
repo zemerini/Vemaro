@@ -198,7 +198,7 @@
         var feedback = document.getElementById('applicationFeedback');
         var cvInput = document.getElementById('applicationCv');
         var submitBtn = form.querySelector('.btn-primary');
-        var fileSelectBtn = document.getElementById('fileSelectBtn');
+        var fileDropArea = document.getElementById('fileDropArea');
         var fileProgressBar = document.getElementById('fileProgressBar');
         var fileProgressText = document.getElementById('fileProgressText');
         var fileChip = document.getElementById('fileChip');
@@ -245,6 +245,10 @@
             }
             if (fileProgressText) {
                 fileProgressText.textContent = safeValue + '%';
+            }
+            var wrap = document.getElementById('fileProgressWrap');
+            if (wrap) {
+                wrap.style.display = (safeValue > 0 && safeValue < 100) ? 'flex' : 'none';
             }
         }
 
@@ -303,6 +307,10 @@
             }
 
             fileChip.hidden = !file;
+            var fileDropArea = document.getElementById('fileDropArea');
+            if (fileDropArea) {
+                fileDropArea.style.display = file ? 'none' : 'flex';
+            }
         }
 
         function clearSelectedFile() {
@@ -464,9 +472,25 @@
             });
         }
 
-        if (fileSelectBtn && cvInput) {
-            fileSelectBtn.addEventListener('click', function () {
+        if (fileDropArea && cvInput) {
+            fileDropArea.addEventListener('click', function () {
                 cvInput.click();
+            });
+            fileDropArea.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                fileDropArea.classList.add('dragover');
+            });
+            fileDropArea.addEventListener('dragleave', function (e) {
+                e.preventDefault();
+                fileDropArea.classList.remove('dragover');
+            });
+            fileDropArea.addEventListener('drop', function (e) {
+                e.preventDefault();
+                fileDropArea.classList.remove('dragover');
+                if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                    cvInput.files = e.dataTransfer.files;
+                    cvInput.dispatchEvent(new Event('change'));
+                }
             });
         }
 
