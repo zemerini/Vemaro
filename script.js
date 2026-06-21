@@ -572,9 +572,9 @@
             xhr.send(new FormData(form));
         });
 
-        fetch('jobs.json', { cache: 'no-store' })
+        fetch('jobs.php', { cache: 'no-store' })
             .then(function (response) {
-                if (!response.ok) throw new Error('jobs.json konnte nicht geladen werden.');
+                if (!response.ok) throw new Error('Stellenangebote konnten nicht geladen werden.');
                 return response.json();
             })
             .then(function (jobs) {
@@ -691,6 +691,52 @@
         startAuto();
     }
 
+    /* ───── 7. SPOTLIGHT EFFECT ───── */
+    function initSpotlight() {
+        var cards = document.querySelectorAll('.glass-card');
+        if (!cards.length) return;
+
+        cards.forEach(function (card) {
+            card.addEventListener('mousemove', function (e) {
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', x + 'px');
+                card.style.setProperty('--mouse-y', y + 'px');
+            });
+        });
+    }
+
+    /* ───── 8. HERO PARALLAX ───── */
+    function initHeroParallax() {
+        var heroContainer = document.querySelector('.hero-container');
+        if (!heroContainer) return;
+
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                requestAnimationFrame(function () {
+                    var scrollY = window.scrollY;
+                    if (scrollY <= 600) {
+                        var opacity = Math.max(0, 1 - (scrollY / 450));
+                        var scale = Math.max(0.94, 1 - (scrollY / 8000));
+                        var y = scrollY * 0.12;
+
+                        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                            heroContainer.style.opacity = opacity;
+                            heroContainer.style.transform = 'translate3d(0, ' + y + 'px, 0) scale(' + scale + ')';
+                        } else {
+                            heroContainer.style.opacity = '';
+                            heroContainer.style.transform = '';
+                        }
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
     /* ───── BOOT ───── */
     function boot() {
         initNavigation();
@@ -699,6 +745,8 @@
         initCareerPage();
         initSmoothScroll();
         initSlider();
+        initSpotlight();
+        initHeroParallax();
     }
 
     function escapeHtml(value) {

@@ -99,6 +99,8 @@ $serviceLabels = [
 $serviceLabel = $serviceLabels[$service] ?? ($service !== '' ? $service : 'Nicht angegeben');
 
 /* ───── 6. E-Mail senden ───── */
+require_once __DIR__ . '/mail-helper.php';
+
 $to = 'kontakt@vemaro.de';
 $subject = 'Kontaktanfrage - ' . mb_substr($name, 0, 80);
 
@@ -121,7 +123,7 @@ $body[] = 'Nachricht:';
 $body[] = '----------------------------------------';
 $body[] = $message;
 
-$sent = @mail(
+$sent = sendMailSecure(
     $to,
     encodeHeader($subject),
     implode("\r\n", $body),
@@ -137,7 +139,7 @@ $autoReplyBody = "Guten Tag " . mb_substr($name, 0, 100) . ",\n\n";
 $autoReplyBody .= "vielen Dank für Ihre Anfrage. Wir haben Ihre Nachricht erhalten und melden uns schnellstmöglich bei Ihnen.\n\n";
 $autoReplyBody .= "Freundliche Grüße\nVemaro";
 
-@mail(
+sendMailSecure(
     sanitizeEmailHeader($email),
     encodeHeader('Ihre Anfrage bei Vemaro'),
     $autoReplyBody,

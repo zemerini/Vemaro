@@ -213,7 +213,8 @@ $mailBody .= 'Content-Disposition: attachment; filename="' . basename($targetFil
 $mailBody .= chunk_split(base64_encode($attachmentContent));
 $mailBody .= '--' . $boundary . "--\r\n";
 
-$sent = @mail($to, encodeHeader($subject), $mailBody, implode("\r\n", $headers));
+require_once __DIR__ . '/mail-helper.php';
+$sent = sendMailSecure($to, encodeHeader($subject), $mailBody, implode("\r\n", $headers));
 
 if (!$sent) {
     respond(500, false, 'Bewerbung konnte nicht gesendet werden. Bitte später erneut versuchen.');
@@ -225,7 +226,7 @@ $autoReplyBody  = "Guten Tag " . mb_substr($name, 0, 100) . ",\n\n";
 $autoReplyBody .= "vielen Dank für Ihre Bewerbung. Wir haben Ihre Unterlagen erhalten und melden uns schnellstmöglich bei Ihnen.\n\n";
 $autoReplyBody .= "Freundliche Grüße\nVemaro";
 
-@mail(
+sendMailSecure(
     sanitizeEmailHeader($email),
     encodeHeader($autoReplySubject),
     $autoReplyBody,
