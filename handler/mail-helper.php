@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 /*
- * Vemaro – E-Mail Helper
+ * Vemaro – E-Mail-Hilfsfunktion
+ * Autor: Leard Mucolli
  *
  * Behandelt den Versand von E-Mails über PHP mail() mit einer
  * lokalen Ausfallsicherung (Email-Logging) für das Testen mit XAMPP.

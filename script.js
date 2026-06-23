@@ -1,3 +1,7 @@
+/*
+ * Vemaro – Haupt-Skript
+ * Autor: Leard Mucolli
+ */
 (function () {
     'use strict';
 
@@ -9,7 +13,7 @@
         var links = document.querySelectorAll('.nav-link');
         var ticking = false;
 
-        /* Scroll-activated glassmorphism */
+        /* Scroll-aktivierter Glassmorphismus */
         window.addEventListener('scroll', function () {
             if (!ticking) {
                 requestAnimationFrame(function () {
@@ -20,7 +24,7 @@
             }
         }, { passive: true });
 
-        /* Mobile toggle with slide-in */
+        /* Mobiler Menü-Umschalter mit Einblendung */
         if (toggle && navLinks) {
             toggle.addEventListener('click', function () {
                 var isOpen = navLinks.classList.contains('open');
@@ -29,11 +33,11 @@
                 toggle.setAttribute('aria-label', isOpen ? 'Menü öffnen' : 'Menü schließen');
                 navLinks.classList.toggle('open');
 
-                /* Prevent body scroll when menu is open */
+                /* Scrollen des Bodys verhindern, wenn das Menü geöffnet ist */
                 document.body.style.overflow = isOpen ? '' : 'hidden';
             });
 
-            /* Close on link click */
+            /* Schließen bei Klick auf einen Link */
             links.forEach(function (l) {
                 l.addEventListener('click', function () {
                     toggle.classList.remove('active');
@@ -44,7 +48,7 @@
                 });
             });
 
-            /* Close on outside click */
+            /* Schließen bei Klick außerhalb */
             document.addEventListener('click', function (e) {
                 if (navLinks.classList.contains('open') &&
                     !navLinks.contains(e.target) &&
@@ -57,7 +61,7 @@
                 }
             });
 
-            /* Close on Escape key */
+            /* Schließen mit Escape-Taste */
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && navLinks.classList.contains('open')) {
                     toggle.classList.remove('active');
@@ -71,7 +75,7 @@
         }
     }
 
-    /* ───── 2. SCROLL REVEAL ───── */
+    /* ───── 2. SCROLL-REVEAL (EINBLENDUNG BEIM SCROLLEN) ───── */
     function initScrollReveal() {
         var cards = document.querySelectorAll('.glass-card');
         if (!cards.length) return;
@@ -88,7 +92,7 @@
         cards.forEach(function (c) { obs.observe(c); });
     }
 
-    /* ───── 3. CONTACT FORM ───── */
+    /* ───── 3. KONTAKTFORMULAR ───── */
     function initContactForm() {
         var form = document.getElementById('contactForm');
         if (!form) return;
@@ -188,7 +192,7 @@
         });
     }
 
-    /* ───── 4. CAREER PAGE ───── */
+    /* ───── 4. KARRIERE-SEITE ───── */
     function initCareerPage() {
         var list = document.getElementById('jobsList');
         var form = document.getElementById('applicationForm');
@@ -591,7 +595,7 @@
             });
     }
 
-    /* ───── 5. SMOOTH SCROLL ───── */
+    /* ───── 5. SMOOTH-SCROLL (WEICHES SCROLLEN) ───── */
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function (a) {
             a.addEventListener('click', function (e) {
@@ -605,7 +609,7 @@
         });
     }
 
-    /* ───── 6. SERVICE SLIDER ───── */
+    /* ───── 6. LEISTUNGS-SLIDER ───── */
     function initSlider() {
         var track = document.getElementById('slideTrack');
         var tabs = document.querySelectorAll('.slide-tab');
@@ -691,7 +695,7 @@
         startAuto();
     }
 
-    /* ───── 7. SPOTLIGHT EFFECT ───── */
+    /* ───── 7. SPOTLIGHT-EFFEKT (SCHEINWERFER) ───── */
     function initSpotlight() {
         var cards = document.querySelectorAll('.glass-card');
         if (!cards.length) return;
@@ -707,7 +711,7 @@
         });
     }
 
-    /* ───── 8. HERO PARALLAX ───── */
+    /* ───── 8. HERO-PARALLAX-EFFEKT ───── */
     function initHeroParallax() {
         var heroContainer = document.querySelector('.hero-container');
         if (!heroContainer) return;
@@ -737,7 +741,7 @@
         }, { passive: true });
     }
 
-    /* ───── BOOT ───── */
+    /* ───── START / INITIALISIERUNG ───── */
     function boot() {
         initNavigation();
         initScrollReveal();

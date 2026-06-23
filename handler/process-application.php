@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 /*
  * Vemaro – Bewerbungs-Upload-Handler (Gehärtet für IONOS-Hosting)
+ * Autor: Leard Mucolli
  *
  * Sicherheitsmaßnahmen:
  *  1. Nur POST erlaubt

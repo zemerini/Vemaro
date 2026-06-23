@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 /*
  * Vemaro – Datenbankverbindung
+ * Autor: Leard Mucolli
  *
  * Stellt die Verbindung zur MySQL-Datenbank via PDO bereit.
  * Fällt bei Verbindungsfehlern stumm zurück (liefert null und schreibt in den PHP-Error-Log),

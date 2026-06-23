@@ -2,6 +2,9 @@
 declare(strict_types=1);
 
 /*
+ * Vemaro – CSRF-Token-Generator
+ * Autor: Leard Mucolli
+ *
  * Generiert ein CSRF-Token und gibt es als JSON zurück.
  * Unterstützt verschiedene Formulare über den ?form= Parameter:
  *   - ?form=application  → Session-Key: csrf_token (Standard)

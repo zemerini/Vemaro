@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 /*
  * Vemaro – Passwort-Hasher Utility
+ * Autor: Leard Mucolli
  *
  * Verwenden Sie dieses Skript, um einen sicheren Hash für ein neues Admin-Passwort zu generieren.
  * Kopieren Sie den generierten Code in die 'handler/config.php' unter 'ADMIN_PASSWORD_HASH'.

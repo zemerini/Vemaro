@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 /*
  * Vemaro – Kontaktformular-Handler
+ * Autor: Leard Mucolli
  *
  * Sendet die Kontaktanfrage per E-Mail an kontakt@vemaro.de
  * und schickt dem Absender eine automatische Bestätigung.

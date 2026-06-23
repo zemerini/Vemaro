@@ -1,10 +1,11 @@
 /* ============================================================
-   VEMARO – LIGHT DESIGN SYSTEM 2026
-   Clean White Theme with Premium Glassmorphism,
-   Gradient Borders, Micro-Interactions & Scroll Reveal
+   VEMARO – DESIGN SYSTEM 2026
+   Autor: Leard Mucolli
+   Helles Design-System mit Premium-Glassmorphismus,
+   Farbverlauf-Rahmen, Mikro-Interaktionen & Scroll-Enthüllung
    ============================================================ */
 
-/* --- Reset & Base --- */
+/* --- Zurücksetzen & Basis --- */
 *,
 *::before,
 *::after {
@@ -14,7 +15,7 @@
 }
 
 :root {
-    /* ── Color Palette ── */
+    /* ── Farbpalette ── */
     --bg-deep: #020203;
     --bg: #050506;
     --bg-elevated: #0a0a0c;
@@ -31,7 +32,7 @@
     --border-hover: rgba(255, 255, 255, 0.10);
     --border-accent: rgba(var(--accent-rgb), 0.25);
 
-    /* ── Glass (Dark Mode) ── */
+    /* ── Glassmorphismus (Dunkelmodus) ── */
     --glass-bg: rgba(255, 255, 255, 0.04);
     --glass-bg-hover: rgba(255, 255, 255, 0.07);
     --glass-blur: 16px;
@@ -39,13 +40,13 @@
     --glass-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 2px 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.2);
     --glass-shadow-lg: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 80px rgba(var(--accent-rgb), 0.1);
 
-    /* ── Radii ── */
+    /* ── Radien ── */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
 
-    /* ── Spacing ── */
+    /* ── Abstände ── */
     --space-xs: 8px;
     --space-sm: 16px;
     --space-md: 24px;
@@ -53,7 +54,7 @@
     --space-xl: 80px;
     --space-2xl: 120px;
 
-    /* ── Typography (clamp for fluid scaling) ── */
+    /* ── Typografie (clamp für fließende Skalierung) ── */
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
     --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
@@ -66,7 +67,7 @@
     --fw-body: 400;
     --lh-body: 1.7;
 
-    /* ── Transitions ── */
+    /* ── Übergänge ── */
     --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -118,7 +119,7 @@ img {
     background-image: radial-gradient(ellipse at top, #0a0a0f 0%, #050506 50%, #020203 100%);
 }
 
-/* Subtle noise/grain texture overlay via SVG filter */
+/* Subtiles Rauschen/Körnungs-Textur-Overlay via SVG-Filter */
 .mesh-bg::before {
     content: "";
     position: absolute;
@@ -131,7 +132,7 @@ img {
     pointer-events: none;
 }
 
-/* Grid overlay for technical precision */
+/* Gitter-Overlay für technische Präzision */
 .mesh-bg::after {
     content: "";
     position: absolute;
@@ -228,7 +229,7 @@ img {
     transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
 
-/* Gradient border pseudo-element */
+/* Pseudo-Element für Farbverlauf-Rahmen */
 .glass-card::before {
     content: "";
     position: absolute;
@@ -253,7 +254,7 @@ img {
     transition: background var(--transition-smooth);
 }
 
-/* Mouse-tracking spotlight glow */
+/* Maus-verfolgendes Scheinwerfer-Glühen */
 .glass-card::after {
     content: "";
     position: absolute;
@@ -332,7 +333,7 @@ img {
     pointer-events: none;
 }
 
-/* Stronger on scroll */
+/* Stärker beim Scrollen */
 .glass-nav.scrolled::before {
     background: rgba(5, 5, 6, 0.95);
     border-color: rgba(255, 255, 255, 0.1);
@@ -392,7 +393,7 @@ img {
     filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(var(--accent-rgb), 0.3));
 }
 
-/* ── Nav Links ── */
+/* ── Navigations-Links ── */
 .nav-links {
     display: flex;
     gap: 2px;
@@ -440,7 +441,7 @@ img {
     transform: scaleX(1);
 }
 
-/* ── CTA Button ── */
+/* ── CTA-Button ── */
 .nav-cta {
     padding: 10px 24px;
     background: var(--accent);
@@ -495,7 +496,7 @@ img {
         inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
 }
 
-/* ── Mobile Toggle ── */
+/* ── Mobiler Menü-Umschalter ── */
 .mobile-toggle {
     display: none;
     flex-direction: column;
@@ -537,7 +538,7 @@ img {
     position: relative;
 }
 
-/* Hero drifting background elements for parallax depth */
+/* Hero treibende Hintergrundelemente für Parallaxe-Tiefe */
 .hero::before,
 .hero::after {
     content: "";
@@ -703,7 +704,7 @@ img {
         inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
 }
 
-/* Shimmer shine sweep on hover */
+/* Schimmernder Glanz-Effekt beim Hovern */
 .btn-primary::after {
     content: "";
     position: absolute;
@@ -768,7 +769,7 @@ img {
     justify-content: center;
 }
 
-/* ── Stats ── */
+/* ── Statistiken ── */
 .hero-stats {
     display: flex;
     align-items: center;
@@ -856,7 +857,7 @@ img {
    SERVICES SLIDER
    ============================================================ */
 
-/* Tab Navigation */
+/* Tab-Navigation */
 .slide-nav-wrapper {
     display: flex;
     align-items: center;
@@ -954,7 +955,7 @@ img {
     border: 1px solid rgba(var(--accent-rgb), 0.2);
 }
 
-/* Slider Container */
+/* Slider-Container */
 .slider-container {
     overflow: hidden;
     padding: 0;
@@ -968,7 +969,7 @@ img {
     touch-action: pan-y;
 }
 
-/* Individual Slide */
+/* Einzelne Folie */
 .slide {
     min-width: 100%;
     display: flex;
@@ -977,7 +978,7 @@ img {
     padding: 40px;
 }
 
-/* Slide Image */
+/* Folien-Bild */
 .slide-img {
     flex: 0 0 45%;
     border-radius: var(--radius-md);
@@ -986,7 +987,7 @@ img {
     position: relative;
 }
 
-/* Indigo tint overlay on images */
+/* Indigo-Farbton-Overlay auf Bildern */
 .slide-img::after {
     content: "";
     position: absolute;
@@ -1002,7 +1003,7 @@ img {
     display: block;
 }
 
-/* Slide Icon (for services without images) */
+/* Folien-Icon (für Leistungen ohne Bilder) */
 .slide-icon {
     flex: 0 0 45%;
     display: flex;
@@ -1014,7 +1015,7 @@ img {
     border-radius: var(--radius-md);
 }
 
-/* Slide Text Content */
+/* Folien-Textinhalt */
 .slide-content {
     flex: 1;
     min-width: 0;
@@ -1413,7 +1414,7 @@ img {
     padding-right: 40px;
 }
 
-/* --- Form Consent Checkbox & Hints --- */
+/* --- Formular-Zustimmungs-Checkbox & Hinweise --- */
 .form-consent {
     margin-top: 4px;
     margin-bottom: 16px;
@@ -1477,7 +1478,7 @@ img {
     margin-top: -8px;
 }
 
-/* --- Contact Info Grid (About Us) --- */
+/* --- Kontakt-Info-Raster (Über uns) --- */
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1877,7 +1878,7 @@ img {
     transform: translateY(0);
 }
 
-/* Staggered delay for list elements */
+/* Gestaffelte Verzögerung für Listen-Elemente */
 .glass-card:nth-child(2) { transition-delay: 0.1s; }
 .glass-card:nth-child(3) { transition-delay: 0.2s; }
 .glass-card:nth-child(4) { transition-delay: 0.3s; }
@@ -1922,14 +1923,14 @@ img {
    Breakpoints: 480px, 768px, 1024px, 1280px
    ============================================================ */
 
-/* ── Large desktop (max 1280px) ── */
+/* ── Großer Desktop (max 1280px) ── */
 @media (max-width: 1280px) {
     .section-container {
         max-width: 1000px;
     }
 }
 
-/* ── Tablet / Small desktop (max 1024px) ── */
+/* ── Tablet / Kleiner Desktop (max 1024px) ── */
 @media (max-width: 1024px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1972,7 +1973,7 @@ img {
         display: flex;
     }
 
-    /* Slide-in mobile menu */
+    /* Einblendbares mobiles Menü */
     .nav-links.open {
         display: flex;
         flex-direction: column;
@@ -2030,7 +2031,7 @@ img {
         padding: 60px 20px;
     }
 
-    /* Mobile form fixes */
+    /* Mobile Formular-Fixes */
     .form-row {
         grid-template-columns: 1fr;
     }
@@ -2059,7 +2060,7 @@ img {
         flex: 1;
     }
 
-    /* ── Mobile Slider Redesign ── */
+    /* ── Mobiles Slider-Redesign ── */
     .slide-nav-wrapper {
         padding: 16px 16px 0 !important;
         gap: 0;

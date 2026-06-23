@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 /*
  * Vemaro – Passwortgeschütztes Admin-Portal (Gehärtet & Sicher)
+ * Autor: Leard Mucolli
  *
  * Ermöglicht das Hinzufügen und Löschen von Stellenangeboten in der MySQL-Datenbank.
  * Komplett geschützt durch ein Session-basiertes Login und CSRF-Tokens.
@@ -192,20 +193,20 @@ if ($isLoggedIn && $dbOnline) {
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* Override Scroll Reveal opacity for Admin Portal since script.js is not loaded */
+        /* Überschreiben der Scroll-Reveal-Deckkraft für das Admin-Portal, da script.js hier nicht geladen wird */
         .glass-card {
             opacity: 1 !important;
             transform: none !important;
         }
 
-        /* AI Button Hover Effect */
+        /* Hover-Effekt für den KI-Button */
         #openAiPromptBtn:hover {
             transform: scale(1.08) rotate(3deg);
             box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.6);
             border-color: var(--accent-bright) !important;
         }
 
-        /* Custom Modal Backdrop */
+        /* Benutzerdefinierter Modal-Hintergrund */
         .modal-backdrop {
             position: fixed;
             inset: 0;
@@ -226,7 +227,7 @@ if ($isLoggedIn && $dbOnline) {
             pointer-events: auto;
         }
 
-        /* Modal Card */
+        /* Modal-Karte */
         .modal-card {
             max-width: 480px;
             width: calc(100% - 32px);
@@ -242,7 +243,7 @@ if ($isLoggedIn && $dbOnline) {
             transform: translateY(0) scale(1);
         }
 
-        /* Modal Elements */
+        /* Modal-Elemente */
         .modal-icon {
             width: 64px;
             height: 64px;
@@ -524,7 +525,7 @@ if ($isLoggedIn && $dbOnline) {
 </head>
 <body>
 
-    <!-- Animated Mesh Background -->
+    <!-- Animierter Mesh-Hintergrund -->
     <div class="mesh-bg" aria-hidden="true">
         <div class="mesh-blob blob-1"></div>
         <div class="mesh-blob blob-2"></div>
@@ -533,7 +534,7 @@ if ($isLoggedIn && $dbOnline) {
     </div>
 
     <?php if (!$isLoggedIn): ?>
-        <!-- LOGIN SCREEN -->
+        <!-- LOGIN-ANSICHT -->
         <main>
             <div class="glass-card login-card">
                 <div class="card-shine"></div>
@@ -559,7 +560,7 @@ if ($isLoggedIn && $dbOnline) {
             </div>
         </main>
     <?php else: ?>
-        <!-- ADMIN DASHBOARD -->
+        <!-- ADMIN-DASHBOARD -->
         <header>
             <nav class="glass-nav" id="navbar" aria-label="Admin Navigation" style="position: absolute;">
                 <div class="nav-container">
@@ -594,7 +595,7 @@ if ($isLoggedIn && $dbOnline) {
             <?php endif; ?>
 
             <?php if (!$dbOnline): ?>
-                <!-- FEHLENDE DATENBANK-VERBINDUNG -->
+                <!-- FEHLENDE DATENBANKVERBINDUNG -->
                 <div class="glass-card admin-card" style="border-color: rgba(239, 68, 68, 0.3);">
                     <div class="card-shine"></div>
                     <h2 class="admin-title" style="color: #f87171; border-color: rgba(239, 68, 68, 0.2);">Datenbank offline</h2>
@@ -618,7 +619,7 @@ if ($isLoggedIn && $dbOnline) {
                 <!-- ADMIN-OBERFLÄCHE -->
                 <div class="admin-grid">
                     
-                    <!-- LINKSEITE: AKTUELLE JOBS -->
+                    <!-- LINKSEITE: AKTUELLE STELLENANGEBOTE -->
                     <div class="glass-card admin-card">
                         <div class="card-shine"></div>
                         <h2 class="admin-title">Aktive Stellenangebote</h2>
@@ -749,7 +750,7 @@ if ($isLoggedIn && $dbOnline) {
         </main>
     <?php endif; ?>
 
-    <!-- Custom Modal for Delete Confirmation -->
+    <!-- Benutzerdefiniertes Modal zur Löschbestätigung -->
     <div id="deleteConfirmModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
         <div class="glass-card modal-card">
             <div class="card-shine"></div>
@@ -769,7 +770,7 @@ if ($isLoggedIn && $dbOnline) {
         </div>
     </div>
 
-    <!-- Custom Modal for AI Prompt Generator -->
+    <!-- Benutzerdefiniertes Modal für den KI-Prompt-Generator -->
     <div id="aiPromptModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle" aria-describedby="aiModalDesc">
         <div class="glass-card modal-card" style="max-width: 600px;">
             <div class="card-shine"></div>
@@ -795,7 +796,7 @@ if ($isLoggedIn && $dbOnline) {
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // --- Deletion Modal ---
+        // --- Löschbestätigungs-Modal ---
         var deleteButtons = document.querySelectorAll('.delete-trigger-btn');
         var deleteModal = document.getElementById('deleteConfirmModal');
         var jobIdText = document.getElementById('deleteJobIdText');
@@ -819,7 +820,7 @@ if ($isLoggedIn && $dbOnline) {
 
         cancelDeleteBtn.addEventListener('click', closeDeleteModal);
 
-        // --- AI Prompt Modal ---
+        // --- KI-Prompt-Modal ---
         var aiModal = document.getElementById('aiPromptModal');
         var openAiBtn = document.getElementById('openAiPromptBtn');
         var closeAiBtn = document.getElementById('closeAiModalBtn');
@@ -886,7 +887,7 @@ if ($isLoggedIn && $dbOnline) {
             });
         }
 
-        // --- Global backdrop/escape closures ---
+        // --- Globale Event-Listener für Klicks außerhalb und Escape-Taste ---
         window.addEventListener('click', function(e) {
             if (e.target === deleteModal) {
                 closeDeleteModal();

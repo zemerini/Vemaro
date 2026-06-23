@@ -1,10 +1,11 @@
--- Database creation script for Vemaro
--- Formatted for MySQL / XAMPP / MySQL Workbench / IONOS
+-- Datenbank-Erstellungsskript für Vemaro
+-- Autor: Leard Mucolli
+-- Formatiert für MySQL / XAMPP / MySQL Workbench / IONOS
 
 CREATE DATABASE IF NOT EXISTS `vemaro_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `vemaro_db`;
 
--- Table structure for table `jobs`
+-- Tabellenstruktur für die Tabelle `jobs`
 DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE `jobs` (
   `id` VARCHAR(50) NOT NULL,
@@ -12,16 +13,16 @@ CREATE TABLE `jobs` (
   `location` VARCHAR(255) NOT NULL,
   `workdays` VARCHAR(100) NOT NULL,
   `startDate` VARCHAR(100) NOT NULL,
-  `employmentTypes` TEXT NOT NULL, -- Stored as a JSON-encoded string (array of strings)
+  `employmentTypes` TEXT NOT NULL, -- Gespeichert als JSON-kodierter String (Array von Strings)
   `description` TEXT NOT NULL,
-  `tasks` TEXT NOT NULL,           -- Stored as a JSON-encoded string (array of strings)
-  `requirements` TEXT NOT NULL,    -- Stored as a JSON-encoded string (array of strings)
-  `benefits` TEXT NOT NULL,        -- Stored as a JSON-encoded string (array of strings)
+  `tasks` TEXT NOT NULL,           -- Gespeichert als JSON-kodierter String (Array von Strings)
+  `requirements` TEXT NOT NULL,    -- Gespeichert als JSON-kodierter String (Array von Strings)
+  `benefits` TEXT NOT NULL,        -- Gespeichert als JSON-kodierter String (Array von Strings)
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Inserting default jobs for a smooth transition from jobs.json
+-- Einfügen der Standard-Jobs für einen reibungslosen Übergang von jobs.json
 INSERT INTO `jobs` (`id`, `title`, `location`, `workdays`, `startDate`, `employmentTypes`, `description`, `tasks`, `requirements`, `benefits`) VALUES
 ('JOB-WV-001', 
  'Warenverräumer (m/w/d)', 

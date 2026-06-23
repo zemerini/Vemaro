@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 /*
  * Vemaro – Job-Feed API
+ * Autor: Leard Mucolli
  * 
  * Gibt alle aktiven Jobs aus der Datenbank als JSON zurück.
  * Falls die Datenbank noch nicht eingerichtet ist oder ausfällt,

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 /*
  * Vemaro – Globale Konfiguration
+ * Autor: Leard Mucolli
  * 
  * Enthält Datenbank-Zugangsdaten und das Passwort für das Admin-Portal.
  * Diese Datei wird sowohl lokal (XAMPP) als auch in der Produktion (IONOS) verwendet.
