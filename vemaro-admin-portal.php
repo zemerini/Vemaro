@@ -206,6 +206,16 @@ if ($isLoggedIn && $dbOnline) {
             border-color: var(--accent-bright) !important;
         }
 
+        /* Formular-Layout im Admin-Portal optimieren (Breite und Stapelung) */
+        .admin-card .form-row {
+            grid-template-columns: 1fr;
+        }
+        .admin-card input,
+        .admin-card select,
+        .admin-card textarea {
+            width: 100%;
+        }
+
         /* Benutzerdefinierter Modal-Hintergrund */
         .modal-backdrop {
             position: fixed;
@@ -522,6 +532,7 @@ if ($isLoggedIn && $dbOnline) {
             justify-content: center;
         }
     </style>
+    <link rel="icon" type="image/png" href="Bilder/Logo.png">
 </head>
 <body>
 

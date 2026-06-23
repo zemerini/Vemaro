@@ -57,6 +57,7 @@ $hash = password_hash($passwordToHash, PASSWORD_DEFAULT);
             margin-top: 20px;
         }
     </style>
+    <link rel="icon" type="image/png" href="../Bilder/Logo.png">
 </head>
 <body>
     <div class="card">

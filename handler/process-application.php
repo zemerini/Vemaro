@@ -179,12 +179,12 @@ if (!move_uploaded_file($tmpPath, $targetFile)) {
 @chmod($targetFile, 0644);
 
 /* ───── 8. E-Mail senden ───── */
-$to       = 'bewerbung@vemaro.de';
+$to       = 'info@vemaro.de';
 $subject  = 'Neue Bewerbung - ' . mb_substr($name, 0, 80) . ' (' . mb_substr($jobId, 0, 40) . ')';
 $boundary = 'vemaro_' . bin2hex(random_bytes(16));
 
 $headers   = [];
-$headers[] = 'From: Vemaro Bewerbung <bewerbung@vemaro.de>';
+$headers[] = 'From: Vemaro Bewerbung <info@vemaro.de>';
 $headers[] = 'Reply-To: ' . sanitizeEmailHeader($email);
 $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
@@ -231,7 +231,7 @@ sendMailSecure(
     sanitizeEmailHeader($email),
     encodeHeader($autoReplySubject),
     $autoReplyBody,
-    'From: Vemaro <bewerbung@vemaro.de>'
+    'From: Vemaro <info@vemaro.de>'
 );
 
 respond(200, true, 'Bewerbung erfolgreich gesendet.');

@@ -102,11 +102,11 @@ $serviceLabel = $serviceLabels[$service] ?? ($service !== '' ? $service : 'Nicht
 /* ───── 6. E-Mail senden ───── */
 require_once __DIR__ . '/mail-helper.php';
 
-$to = 'kontakt@vemaro.de';
+$to = 'info@vemaro.de';
 $subject = 'Kontaktanfrage - ' . mb_substr($name, 0, 80);
 
 $headers = [];
-$headers[] = 'From: Vemaro Kontakt <kontakt@vemaro.de>';
+$headers[] = 'From: Vemaro Kontakt <info@vemaro.de>';
 $headers[] = 'Reply-To: ' . sanitizeEmailHeader($email);
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
 $headers[] = 'MIME-Version: 1.0';
@@ -144,7 +144,7 @@ sendMailSecure(
     sanitizeEmailHeader($email),
     encodeHeader('Ihre Anfrage bei Vemaro'),
     $autoReplyBody,
-    'From: Vemaro <kontakt@vemaro.de>'
+    'From: Vemaro <info@vemaro.de>'
 );
 
 respond(200, true, 'Nachricht erfolgreich gesendet.');

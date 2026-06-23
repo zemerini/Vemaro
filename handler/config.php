@@ -10,10 +10,10 @@ declare(strict_types=1);
  */
 
 // Datenbank-Konfiguration
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'vemaro_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_HOST', 'db5020764072.hosting-data.io');
+define('DB_NAME', 'dbs15819810');
+define('DB_USER', 'dbu2315954');
+define('DB_PASS', 'Sivanatham123!');
 
 // Admin-Passwortschutz (Standard-Passwort: Vemaro2026Admin!)
 // Dieses Passwort wird gehasht gespeichert. Um ein neues Passwort zu generieren,

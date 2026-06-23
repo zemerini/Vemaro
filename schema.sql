@@ -2,9 +2,6 @@
 -- Autor: Leard Mucolli
 -- Formatiert für MySQL / XAMPP / MySQL Workbench / IONOS
 
-CREATE DATABASE IF NOT EXISTS `vemaro_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `vemaro_db`;
-
 -- Tabellenstruktur für die Tabelle `jobs`
 DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE `jobs` (
